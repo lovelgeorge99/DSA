@@ -30,46 +30,51 @@ public class TreeNode {
 
 
 
-//    Q872
 
-    public int getLeaf(TreeNode root){
-        List<Integer> l= new ArrayList();
+    //    Q872-------------------------------------------------
+    public static  List<Integer> getLeaf(List l,TreeNode root){
 
-        if(root.left==null && root.right==null){
-            l.add(root.val) ;
-        }
-        int left=getLeaf(root.left);
-        int right=getLeaf(root.right);
+          if(root==null){
+              return l;
+          }
+          if(root.left==null && root.right==null){
+              l.add(root.val);
+          }
+          getLeaf(l,root.left);
+          getLeaf(l,root.right);
 
-        return 0;
+          return l;
 
     }
-    public boolean leafSimilar(TreeNode root1, TreeNode root2) {
-        int val1=root1.val;
-        int val2=root2.val;
-        if(root1.left==null && root1.right==null){
-             val1= root1.val;
-        }
+    public static boolean leafSimilar(TreeNode root1, TreeNode root2) {
+        List<Integer> l1= new ArrayList<>();
+        List<Integer> l2= new ArrayList<>();
 
-        if(root2.left==null && root2.right==null){
-            val2= root2.val;
-        }
-        if(val1==val2){
+        getLeaf(l1,root1);
+        getLeaf(l2,root2);
 
-        }
-
-
-
-    return false;
+        System.out.println(l1);
+        System.out.println(l2);
+        System.out.println(l1.equals(l2));
+        return l1.equals(l2);
 
     }
 
     public static void main(String[] args) {
 
-        TreeNode t1 = new TreeNode(5);
-        TreeNode t2 = new TreeNode(15);
-        TreeNode t= new TreeNode(10,t1,t2);
-        System.out.println("sum"+rangeSumBST(t,5,14));
+        TreeNode t1 = new TreeNode(2);
+        TreeNode t2 = new TreeNode(3);
+        TreeNode t= new TreeNode(1,t1,t2);
+
+        TreeNode x1 = new TreeNode(3);
+        TreeNode x2 = new TreeNode(2);
+        TreeNode x= new TreeNode(1,x1,x2);
+
+//        System.out.println("sum"+rangeSumBST(t,5,14));
+
+
+        System.out.println((leafSimilar(t, x)));
+        System.out.println();
 
 
 
