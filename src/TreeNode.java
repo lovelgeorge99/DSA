@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class TreeNode {
@@ -60,6 +61,31 @@ public class TreeNode {
 
     }
 
+
+
+//    Q2385==============================================
+    public static HashMap<Integer,List<Integer>> convertUnDirectional(TreeNode root){
+        HashMap<Integer,List<Integer>> map= new HashMap<>();
+
+        if(root==null) {
+            return map;
+        }
+        List<Integer> l= new ArrayList<>();
+        if(root.left!=null){
+            l.add(root.left.val);
+        }
+        if(root.right!=null){
+            l.add(root.right.val);
+        }
+
+        map.put(root.val,l);
+//        map.put(root.left.val,root.val);
+//        map.put(root.right.val,)
+
+        return map;
+
+    }
+
     public static void main(String[] args) {
 
         TreeNode t1 = new TreeNode(2);
@@ -73,9 +99,10 @@ public class TreeNode {
 //        System.out.println("sum"+rangeSumBST(t,5,14));
 
 
-        System.out.println((leafSimilar(t, x)));
-        System.out.println();
+//        Q872
+//        System.out.println((leafSimilar(t, x)));
 
+//      Q2385
 
 
     }
