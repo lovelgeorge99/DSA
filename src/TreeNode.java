@@ -86,11 +86,35 @@ public class TreeNode {
 
     }
 
+
+//    Q1026=================================
+
+    public static int maxAncestorDiff(TreeNode root,int m) {
+          if(root==null)
+          {
+              return 0;
+          }
+
+          if(root.right==null && root.left==null){
+              return root.val;
+          }
+          int left =root.val-maxAncestorDiff(root.left,m);
+          int right =root.val-maxAncestorDiff(root.right,m);
+
+          int n=Math.abs(left)-Math.abs(right);
+          if(Math.abs(left)>Math.abs(right)){
+              return Math.abs(left);
+          }
+
+          return Math.abs(right);
+
+
+    }
     public static void main(String[] args) {
 
-        TreeNode t1 = new TreeNode(2);
-        TreeNode t2 = new TreeNode(3);
-        TreeNode t= new TreeNode(1,t1,t2);
+        TreeNode t1 = new TreeNode(3);
+        TreeNode t2 = new TreeNode(10);
+        TreeNode t= new TreeNode(8,t1,t2);
 
         TreeNode x1 = new TreeNode(3);
         TreeNode x2 = new TreeNode(2);
@@ -102,7 +126,8 @@ public class TreeNode {
 //        Q872
 //        System.out.println((leafSimilar(t, x)));
 
-//      Q2385
+//      Q0126
+        System.out.println(maxAncestorDiff(t,-1));
 
 
     }
