@@ -8,31 +8,20 @@ public class Q4 {
         int j=0;
 
         int k=0;
-        while(i<=m && j<=m){
-            if(i<l1 || j<l2){
-                if((nums1[i]<nums2[j])){
-                    System.out.println("insd");
-                    i++;
-                }
-                else if((nums1[i]>=nums2[j])){
-                    System.out.println("indfsd");
-                    j++;
-                }
+        while((i+k)<=m){
 
-            }
-            else if(i<l1){
-                System.out.println("ds");
-
+            if(i<l1 && nums1[i]<=nums2[j]){
                 i++;
-
             }
-            else{
+            else if(j<l2 && nums1[i]>=nums2[j]){
                 j++;
-
             }
-            k++;
-
-
+            if(i>=l1){
+                j++;
+            }
+            else if(j>=l1){
+                i++;
+            }
 
         }
         System.out.println(i+" "+j);
