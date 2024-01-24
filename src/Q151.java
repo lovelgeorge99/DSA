@@ -23,10 +23,10 @@ public class Q151 {
             }
         }
         if(temp!=""){
-            return temp+" "+str;
+            return (temp+" "+str).trim();
         }
         else{
-            return str;
+            return str.trim();
         }
 
 

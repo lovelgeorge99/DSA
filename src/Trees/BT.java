@@ -45,6 +45,8 @@ public class BT {
         printTree(root.right);
     }
 
+
+//    Q1457===============================================================================================
     public static int pseudoPalindromicPaths (BT root) {
         int[] parity=new int[9];
         int  ct=0;
@@ -98,6 +100,8 @@ public class BT {
 
     }
 
+//    XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
 
     public static void main(String[] args) {
         int[] nums = { 9};
@@ -105,7 +109,8 @@ public class BT {
 //        printTree(root);
 
         List<Integer> arr=new ArrayList<>();
-        System.out.println("pseudo palindorme"+pseudoPalindromicPaths(root));
+
+//        System.out.println("pseudo palindorme"+pseudoPalindromicPaths(root)); //Q1457
     }
 
     }
