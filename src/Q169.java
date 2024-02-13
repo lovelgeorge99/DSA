@@ -3,14 +3,16 @@ public class Q169 {
         int count=0;
         int c=nums[0];
         for (int i = 0; i < nums.length; i++) {
-            if(nums[i]==c){
+            if(count==0){
+                c=nums[i];
                 count++;
             }
-            else {
-                count--;
-
-                    c=nums[i];
+            else if(c==nums[i]){
+                count++;
                 
+            }
+            else{
+                count--;
             }
 
         }
@@ -18,7 +20,7 @@ public class Q169 {
     }
 
     public static void main(String[] args) {
-        int[]  nums={3,2,3,2,3,3,2};
+        int[]  nums={3,2,3,2,3,3,2,2,2};
         System.out.println(majorityElement(nums));
     }
 }
