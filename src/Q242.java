@@ -17,6 +17,6 @@ public class Q242 {
     }
 
     public static void main(String[] args) {
-        System.out.println(isAnagram("abbbc","bbbca"));
+        System.out.println(isAnagram("bbc","bbbca"));
     }
 }
