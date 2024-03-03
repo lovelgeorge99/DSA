@@ -1,3 +1,5 @@
+import java.util.List;
+
 public class AddTwoNumbers {
 
       public static class ListNode {
@@ -134,17 +136,44 @@ public class AddTwoNumbers {
         }
         return l;
     }
+
+
+
+//    Q19===============================
+        public static ListNode removeNthFromEnd(ListNode head, int n) {
+            int c=1;
+            ListNode temp=head;
+            while(temp.next!=null){
+                temp=temp.next;
+                c+=1;
+            }
+
+            if(n==c){
+                head=head.next;
+                return head;
+            }
+            int d=c-n;
+            temp=head;
+            int t=1;
+            while(t!=d){
+                temp=temp.next;
+                t+=1;
+            }
+            temp.next=temp.next.next;
+            return head;
+        }
     public static void main(String[] args) {
-        int[] arr1={1,2,4,4,4};
+        int[] arr1={1};
         int[] arr2={1,3,4,5};
         ListNode l1= addNodes(arr1);
-        ListNode l2= addNodes(arr2);
-        ListNode l=mergeTwoLists(l1,l2);
-        printData(l);
+//        ListNode l2= addNodes(arr2);
+//        ListNode l=mergeTwoLists(l1,l2);
+//        printData(l);
 //        l.val=2;
 //        l.next.val=3;
 //        l.next.next=null;
 //        System.out.println(addTwoNumbers(l));
+        printData(removeNthFromEnd(l1,1));
 
 
     }

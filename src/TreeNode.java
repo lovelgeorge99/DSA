@@ -1,6 +1,6 @@
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import Trees.BT;
+
+import java.util.*;
 
 public class TreeNode {
 
@@ -110,6 +110,65 @@ public class TreeNode {
 
 
     }
+
+
+//    public static boolean isEvenOddTree(TreeNode root) {
+//
+//        Queue<TreeNode> q= new LinkedList<>();
+//
+//        q.offer(root);
+//        List<Integer> l= new ArrayList<>();
+//
+//        while (!q.isEmpty()){
+//            TreeNode current = q.poll();
+//            System.out.println(current.val);
+//            l.add(current.val);
+//
+//            if(current.left!=null){
+//                q.offer(current.left);
+//            }
+//            if(current.right!=null){
+//                q.offer(current.right);
+//            }
+//        }
+//        System.out.println(l);
+//
+//
+//        return true;
+//
+//    }
+    public boolean isEvenOddTree(TreeNode root) {
+        Queue<TreeNode> queue = new LinkedList<>();
+        queue.offer(root);
+        boolean evenLevel = true;
+
+        while (!queue.isEmpty()) {
+            int size = queue.size();
+            int prev = evenLevel ? Integer.MIN_VALUE : Integer.MAX_VALUE;
+
+            while (size-- > 0) {
+                TreeNode node = queue.poll();
+
+                if ((evenLevel && (node.val % 2 == 0 || node.val <= prev)) ||
+                        (!evenLevel && (node.val % 2 == 1 || node.val >= prev))) {
+                    return false;
+                }
+
+                prev = node.val;
+
+                if (node.left != null) {
+                    queue.offer(node.left);
+                }
+                if (node.right != null) {
+                    queue.offer(node.right);
+                }
+            }
+
+            evenLevel = !evenLevel;
+        }
+
+        return true;
+    }
     public static void main(String[] args) {
 
         TreeNode t1 = new TreeNode(3);
@@ -127,7 +186,7 @@ public class TreeNode {
 //        System.out.println((leafSimilar(t, x)));
 
 //      Q0126
-        System.out.println(maxAncestorDiff(t,-1));
+//        System.out.println(isEvenOddTree(t));
 
 
     }
