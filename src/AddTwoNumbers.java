@@ -162,6 +162,26 @@ public class AddTwoNumbers {
             temp.next=temp.next.next;
             return head;
         }
+
+
+    //    Q141============================
+    public boolean hasCycle(ListNode head) {
+
+        ListNode t=head;
+        ListNode r=head;
+
+        while(t!=null || r!=null){
+            t=t.next;
+            r=r.next;
+            if(t.val==r.val){
+               return true;
+            }
+
+        }
+
+        return false;
+
+    }
     public static void main(String[] args) {
         int[] arr1={1};
         int[] arr2={1,3,4,5};
