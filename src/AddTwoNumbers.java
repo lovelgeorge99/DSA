@@ -1,4 +1,6 @@
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class AddTwoNumbers {
 
@@ -182,6 +184,44 @@ public class AddTwoNumbers {
         return false;
 
     }
+
+//    Q1171
+    public static ListNode removeZeroSumSublists(ListNode head) {
+        int prefixSum = 0;
+        Map<Integer, ListNode> map = new HashMap<>();
+
+        ListNode dummy = new ListNode(0);
+        dummy.next = head;
+        map.put(0, dummy);
+
+        while (head != null) {
+            prefixSum += head.val;
+
+            if (map.containsKey(prefixSum)) {
+                ListNode p = map.get(prefixSum);
+                ListNode start = p;
+                int pSum = prefixSum;
+
+                while (start != head) {
+                    start = start.next;
+                    pSum += start.val;
+                    if (start != head) {
+                        map.remove(pSum);
+                    }
+                }
+
+                p.next = start.next;
+
+            } else {
+                map.put(prefixSum, head);
+            }
+
+            head = head.next;
+        }
+
+        return dummy.next;
+    }
+
     public static void main(String[] args) {
         int[] arr1={1};
         int[] arr2={1,3,4,5};
