@@ -1,29 +1,18 @@
 public class Q724 {
     public int pivotIndex(int[] nums) {
-    int i=0;
-    int j= nums.length-1;
-    int left=nums[i];
-    int right=nums[j];
-    while (i<j && i+j<nums.length-1){
-        if(left==right){
-            return i+1;
+        int tsum=0;
+        for (int i = 0; i < nums.length; i++) {
+            tsum+=nums[i];
         }
-
-
-        else if(left>right){
-
-            right=right+nums[j];
-            j--;
-
+        int lsum=0;
+        for (int i = 0; i < nums.length; i++) {
+            int rsum=tsum-lsum-nums[i];
+            if(lsum==rsum){
+                return i;
+            }
+            lsum+=nums[i];
         }
-        else if(left<right){
-
-            left=left+nums[i];
-            i++;
-
-        }
-    }
-    return -1;
+        return -1;
     }
 
     public static void main(String[] args) {

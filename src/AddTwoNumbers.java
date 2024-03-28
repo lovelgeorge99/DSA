@@ -222,6 +222,55 @@ public class AddTwoNumbers {
         return dummy.next;
     }
 
+//    Q1669 =========================
+    public static ListNode mergeInBetween(ListNode list1, int a, int b, ListNode list2) {
+          ListNode head=list1;
+          ListNode start=list2;
+          while (list2.next!=null){
+              list2=list2.next;
+          }
+          ListNode end= list2;
+
+
+          int c=1;
+          while (c!=a){
+            list1=list1.next;
+            c++;
+          }
+          ListNode temp1=list1;
+          while(c!=b+1){
+              list1=list1.next;
+              c++;
+          }
+        System.out.println(list1.val);
+
+          temp1.next=start;
+          end.next=list1;
+          return head;
+
+
+
+
+    }
+
+//    Q206 ===================
+    public static ListNode reverseList(ListNode head) {
+        ListNode curr = head;
+        ListNode prev = null;
+        while(curr != null){
+            ListNode nextNode = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = nextNode;
+        }
+        return prev;
+
+    }
+
+//    Q234 ===========================================
+    public static boolean isPalindrome(ListNode head) {
+          return true;
+    }
     public static void main(String[] args) {
         int[] arr1={1};
         int[] arr2={1,3,4,5};
